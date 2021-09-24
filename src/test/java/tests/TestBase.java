@@ -4,6 +4,7 @@ import helper.Help;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -18,7 +19,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
 
     @BeforeSuite
     @Parameters({"Browser"})
-    public void StartDriver(@Optional ("firefox") String BrowserName) throws InterruptedException {
+    public void StartDriver(@Optional ("chrome-headless") String BrowserName) throws InterruptedException {
         if(BrowserName.equalsIgnoreCase("firefox"))
         {
             // data for firfox
@@ -30,7 +31,17 @@ public class TestBase extends AbstractTestNGCucumberTests {
         {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
             driver = new ChromeDriver();
+        }  else if
+        (BrowserName.equalsIgnoreCase("chrome-headless"))
+        {
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+            driver = new ChromeDriver(options);
         }
+
+
+       ;
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5 , TimeUnit.SECONDS);
@@ -41,7 +52,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
     }
     //take screenshot when test case fail
     @AfterMethod
-    public void failtestcase(ITestResult result)
+    public void failTestCase(ITestResult result)
     {
         if(result.getStatus() == ITestResult.FAILURE)
         {
