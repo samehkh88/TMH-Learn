@@ -29,7 +29,7 @@ public class UserCanContactTheSystem extends TestBase {
     @When("the user enter the data {string} , {string} , {string}")
     public void the_user_enter_the_data(String name, String email, String message) {
 
-        ContactUsPageObject.SubmitContact(name, email,message);
+        ContactUsPageObject.SubmitContact(name, email, message);
     }
 
     @Then("the success message displayed successfully {string}")

@@ -1,6 +1,9 @@
 package tests;
 
-import Pages.*;
+import Pages.HomePage;
+import Pages.UserChangePasswordPage;
+import Pages.UserDashboard;
+import Pages.UserLoginPage;
 import data.Exlreader;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -10,31 +13,31 @@ import java.io.IOException;
 
 public class UserChangePasswordTest extends TestBase {
     HomePage HomeObject;
-    UserDashboard UserDashboardObject ;
-    UserChangePasswordPage UserChangePasswordPageObject ;
-    UserLoginPage LoginPageObject ;
+    UserDashboard UserDashboardObject;
+    UserChangePasswordPage UserChangePasswordPageObject;
+    UserLoginPage LoginPageObject;
 
 
     @DataProvider(name = "TestData1")
-    public  Object [][] UserData () throws IOException {
+    public Object[][] UserData() throws IOException {
         Exlreader Read = new Exlreader();
-        return Read.GetExlData(0,5);
+        return Read.GetExlData(0, 5);
     }
 
 
     @Test(dataProvider = "TestData1")
 
-    public void UserCanChangePassword(String name , String lastName , String email , String Pass , String Cpass){
+    public void UserCanChangePassword(String name, String lastName, String email, String Pass, String Cpass) {
 
         // object from the logon test case
         HomeObject = new HomePage(driver);
         HomeObject.Click_login();
 
         LoginPageObject = new UserLoginPage(driver);
-        LoginPageObject.Userlogin(email,Pass);
+        LoginPageObject.Userlogin(email, Pass);
 
         // Assert that user login successfully
-        Assert.assertEquals(true , HomeObject.logOutLink.isDisplayed());
+        Assert.assertEquals(true, HomeObject.logOutLink.isDisplayed());
 
         // open my account
         HomeObject = new HomePage(driver);
@@ -46,9 +49,9 @@ public class UserChangePasswordTest extends TestBase {
 
         // change password form
         UserChangePasswordPageObject = new UserChangePasswordPage(driver);
-        UserChangePasswordPageObject.UserChangePassword(Pass,"Max@123","Max@123");
+        UserChangePasswordPageObject.UserChangePassword(Pass, "Max@123", "Max@123");
 
         // Assertion
-        Assert.assertEquals(true , UserChangePasswordPageObject.ChangePasswordSuccessMessage.getText().equalsIgnoreCase("Password was changed"));
+        Assert.assertEquals(true, UserChangePasswordPageObject.ChangePasswordSuccessMessage.getText().equalsIgnoreCase("Password was changed"));
     }
 }

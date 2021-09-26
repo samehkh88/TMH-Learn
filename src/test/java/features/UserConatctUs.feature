@@ -10,7 +10,7 @@ Feature: User Contact Us form
 
 
     Examples:
-      | name | email | message  | SuccessMessage |
-      | marko  |4421@yahoo.com  |test message from sameh | Your enquiry has been successfully sent to the store owner. |
+      | name  | email          | message                 | SuccessMessage                                              |
+      | marko | 4421@yahoo.com | test message from sameh | Your enquiry has been successfully sent to the store owner. |
 
 

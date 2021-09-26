@@ -10,6 +10,6 @@ Feature: User Registration
 
 
     Examples:
-      | firstname | lastname | email          | password | cpassword |
-      | marko     | jan      | 442211@yahoo.com | 123456   | 123456    |
-      | hisham    | sief     | 1512@yahoo.com   | 123456   | 123456    |
+      | firstname | lastname | email             | password | cpassword |
+      | marko     | jan      | 4422111@yahoo.com | 123456   | 123456    |
+      | hisham    | sief     | 15121@yahoo.com   | 123456   | 123456    |

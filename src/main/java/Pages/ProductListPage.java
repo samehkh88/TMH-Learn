@@ -12,16 +12,12 @@ public class ProductListPage extends PageBase {
     }
 
     @FindBy(xpath = "//h2[@class='product-title']/a")
-    List<WebElement> ProductTitle ;
+    List<WebElement> ProductTitle;
 
 
-
-    public void GetProductFromList(String ProductName)
-    {
-        for (int x = 0 ; x < ProductTitle.size() ; x++)
-        {
-            if(ProductTitle.get(x).getText().equalsIgnoreCase(ProductName))
-            {
+    public void GetProductFromList(String ProductName) {
+        for (int x = 0; x < ProductTitle.size(); x++) {
+            if (ProductTitle.get(x).getText().equalsIgnoreCase(ProductName)) {
                 ProductTitle.get(x).click();
             }
         }

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class UserDashboard extends PageBase{
+public class UserDashboard extends PageBase {
 
     public UserDashboard(WebDriver driver) {
         super(driver);
@@ -15,18 +15,16 @@ public class UserDashboard extends PageBase{
     WebElement MyAddress ;
 */
     @FindBy(linkText = "Addresses")
-    WebElement MyAddress ;
+    WebElement MyAddress;
 
     @FindBy(linkText = "Change password")
-    WebElement ChangePassword ;
+    WebElement ChangePassword;
 
-    public void OpenMyAddressPage()
-    {
+    public void OpenMyAddressPage() {
         ClickButton(MyAddress);
     }
 
-    public void OpenChangePasswordPage()
-    {
+    public void OpenChangePasswordPage() {
         ClickButton(ChangePassword);
     }
 }

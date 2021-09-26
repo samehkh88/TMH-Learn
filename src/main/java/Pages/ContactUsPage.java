@@ -1,11 +1,8 @@
 package Pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.security.PublicKey;
 
 public class ContactUsPage extends PageBase {
     public ContactUsPage(WebDriver driver) {
@@ -28,13 +25,13 @@ public class ContactUsPage extends PageBase {
     public WebElement SuccessMessage;
 
     @FindBy(linkText = "Contact us")
-    public WebElement ContactLink ;
+    public WebElement ContactLink;
 
 
-    public void ClickContactLink()
-    {
+    public void ClickContactLink() {
         ClickButton(ContactLink);
     }
+
     public void SubmitContact(String name, String email, String message) {
         SendData(YourName, name);
         EmptyData(Email);

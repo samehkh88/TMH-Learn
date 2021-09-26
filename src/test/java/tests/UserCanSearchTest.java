@@ -12,20 +12,20 @@ import java.io.IOException;
 
 public class UserCanSearchTest extends TestBase {
 
-    SearchPage SearchPageObject ;
-    ProductListPage ProductListPageObject ;
+    SearchPage SearchPageObject;
+    ProductListPage ProductListPageObject;
+
     // here the way to create data provider for read data from exl
     @DataProvider(name = "Productsearch")
-    public  Object [][] UserData () throws IOException {
+    public Object[][] UserData() throws IOException {
         Exlreader Read = new Exlreader();
-        return Read.GetExlData(1,3);
+        return Read.GetExlData(1, 3);
     }
 
     @Test(dataProvider = "Productsearch")
-    public void UserCanSearchSuccessfully(String SearchText, String ProductName , String AssertText)
-    {
+    public void UserCanSearchSuccessfully(String SearchText, String ProductName, String AssertText) {
         SearchPageObject = new SearchPage(driver);
-        SearchPageObject.SearchNormal( SearchText);
+        SearchPageObject.SearchNormal(SearchText);
 
         ProductListPageObject = new ProductListPage(driver);
         ProductListPageObject.GetProductFromList(ProductName);
@@ -33,6 +33,6 @@ public class UserCanSearchTest extends TestBase {
 
         // Assertion
         ProductDetailsPage ProductDetailsPageObject = new ProductDetailsPage(driver);
-        Assert.assertEquals(true ,ProductDetailsPageObject.ProductName.getText().equalsIgnoreCase(AssertText));
+        Assert.assertEquals(true, ProductDetailsPageObject.ProductName.getText().equalsIgnoreCase(AssertText));
     }
 }

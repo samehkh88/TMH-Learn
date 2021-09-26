@@ -9,13 +9,13 @@ public class UserChangePasswordPage extends PageBase {
         super(driver);
     }
 
-    @FindBy(id ="OldPassword")
+    @FindBy(id = "OldPassword")
     WebElement OldPassword;
 
-    @FindBy(id ="NewPassword")
+    @FindBy(id = "NewPassword")
     WebElement NewPassword;
 
-    @FindBy(id ="ConfirmNewPassword")
+    @FindBy(id = "ConfirmNewPassword")
     WebElement ConfirmNewPassword;
 
     @FindBy(xpath = "//button[contains(@class,'change-password-button')]")
@@ -24,11 +24,10 @@ public class UserChangePasswordPage extends PageBase {
     @FindBy(xpath = "")
     public WebElement ChangePasswordSuccessMessage;
 
-    public void UserChangePassword(String OldPass , String NewPass , String ConfirmNewPass)
-    {
-        SendData(OldPassword , OldPass);
-        SendData(NewPassword , NewPass);
-        SendData(ConfirmNewPassword , ConfirmNewPass);
+    public void UserChangePassword(String OldPass, String NewPass, String ConfirmNewPass) {
+        SendData(OldPassword, OldPass);
+        SendData(NewPassword, NewPass);
+        SendData(ConfirmNewPassword, ConfirmNewPass);
         ClickButton(SubmitButton);
     }
 }

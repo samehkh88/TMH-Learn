@@ -10,11 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Exlreader {
-    static FileInputStream fis = null ;
+    static FileInputStream fis = null;
 
-    public FileInputStream getfileinputstream ()
-    {
-        String filepath =System.getProperty("user.dir")+"\\DataFiles\\userdata.xlsx" ;
+    public FileInputStream getfileinputstream() {
+        String filepath = System.getProperty("user.dir") + "\\DataFiles\\userdata.xlsx";
         File srcfile = new File(filepath);
 
         try {
@@ -27,8 +26,7 @@ public class Exlreader {
 
     }
 
-    public Object[][] GetExlData (int sheetNum , int TotalColum) throws IOException
-    {
+    public Object[][] GetExlData(int sheetNum, int TotalColum) throws IOException {
         fis = getfileinputstream();
         XSSFWorkbook workbook = null;
         try {
@@ -37,11 +35,10 @@ public class Exlreader {
             System.out.println("the data file not found" + e);
         }
         XSSFSheet sheet = workbook.getSheetAt(sheetNum);
-        int totalNumberOfrows = (sheet.getLastRowNum()+1);
-        int totalNumberOfCoulems = TotalColum ;
-        String [][] arrayExlData = new String[totalNumberOfrows][totalNumberOfCoulems];
-        for (int i = 0; i < totalNumberOfrows; i++)
-        {
+        int totalNumberOfrows = (sheet.getLastRowNum() + 1);
+        int totalNumberOfCoulems = TotalColum;
+        String[][] arrayExlData = new String[totalNumberOfrows][totalNumberOfCoulems];
+        for (int i = 0; i < totalNumberOfrows; i++) {
             for (int j = 0; j < totalNumberOfCoulems; j++) {
                 XSSFRow row = sheet.getRow(i);
                 arrayExlData[i][j] = row.getCell(j).toString();

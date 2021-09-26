@@ -12,4 +12,5 @@
             <class name="tests.UserCanSearchWithAutoTest"></class>
             <class name="tests.ContactUsTest"></class>
         </classes>
-    </test></suite>
+    </test>
+</suite>

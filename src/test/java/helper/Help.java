@@ -12,13 +12,12 @@ import java.nio.file.Paths;
 
 public class Help {
 
-    public static void TakeScreenShot(WebDriver driver , String ScreenShotName)
-    {
-        Path dest = Paths.get("./screenshots",ScreenShotName+".png");
+    public static void TakeScreenShot(WebDriver driver, String ScreenShotName) {
+        Path dest = Paths.get("./screenshots", ScreenShotName + ".png");
         try {
             Files.createDirectories(dest.getParent());
             FileOutputStream out = new FileOutputStream(dest.toString());
-            out.write(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES));
+            out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
             out.close();
         } catch (IOException e) {
             System.out.println("Error when take screenshot" + e);
